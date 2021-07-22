@@ -12,7 +12,7 @@ export type Setter<T> = (newVal: T) => void;
 export type Updater<T> = (fn: Updated<T>) => void;
 export type Updated<T> = (val: T) => T;
 
-export function store<T>(original: T): Store<T> {
+export function createStore<T>(original: T): Store<T> {
 	let val = original;
 	const subscribers: Record<string, Subscribed<T> | undefined> = {};
 
