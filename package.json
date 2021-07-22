@@ -1,0 +1,23 @@
+{
+	"name": "stores-plus",
+	"version": "0.0.0",
+	"description": "A feature-rich Svelte-compatible store library",
+	"main": "dist/index.js",
+	"types": "src/index.ts",
+	"type": "module",
+	"repository": "https://github.com/manen/stores-plus",
+	"author": "manen",
+	"license": "MIT",
+	"private": false,
+	"scripts": {
+		"build": "tsc"
+	},
+	"devDependencies": {
+		"@types/node": "^16.4.0",
+		"@typescript-eslint/eslint-plugin": "^4.28.4",
+		"@typescript-eslint/parser": "^4.28.4",
+		"eslint": "^7.31.0",
+		"prettier": "^2.3.2",
+		"typescript": "^4.3.5"
+	}
+}
