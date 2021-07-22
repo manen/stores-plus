@@ -1,11 +1,16 @@
 export type Store<T> = {
 	subscribe: Subscriber<T>;
 	set: Setter<T>;
+	update: Updater<T>;
 };
 export type Subscriber<T> = (fn: Subscribed<T>) => Unsubscriber;
 export type Subscribed<T> = (val: T) => void;
 export type Unsubscriber = () => void;
+
 export type Setter<T> = (newVal: T) => void;
+
+export type Updater<T> = (fn: Updated<T>) => void;
+export type Updated<T> = (val: T) => T;
 
 export function store<T>(original: T): Store<T> {
 	let val = original;
@@ -24,9 +29,13 @@ export function store<T>(original: T): Store<T> {
 		Object.values(subscribers).forEach((fn) => (fn ? fn(newVal) : undefined));
 		val = newVal;
 	}
+	function update(fn: Updated<T>) {
+		set(fn(val));
+	}
 
 	return {
 		subscribe,
 		set,
+		update,
 	};
 }
